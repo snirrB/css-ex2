@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Dynamic;
+using static B23_Ex02_TalKoren_312498520_SnirBabi_204264071.GameManager;
 
 internal class GameConfiguration
 {
-    private int m_SquareBoradSize = 0;
-    private bool m_isTwoPlayets = false;
+    private int m_BoradSize = 0;
+    private GameMode? m_gameMode = null;
     private bool m_userPressExit = false;
-    private string m_player1Name;
-    private string m_player2Name;
+    //private string m_player1Name;
+    //private string m_player2Name;
 
-    public int getSquareBoradSize()
+    public int GetBoradSize()
     { 
-        return m_SquareBoradSize;
+        return m_BoradSize;
     }
 
-    public void setSquareBoradSize()
+    public void SetBoradSize()
     {
         int numToCheck = 0;
         bool isInputVaild = false;
         string inputFromUser;
-        
+
+        Ex02.ConsoleUtils.Screen.Clear();
+
         Console.WriteLine("==============================================");
         Console.WriteLine("               tic-tac-toe                   ");
         Console.WriteLine("     new game - set the size of the borad    ");
@@ -55,24 +58,22 @@ internal class GameConfiguration
                 continue;
             }
 
-            
+            Ex02.ConsoleUtils.Screen.Clear();
+
             string message = String.Format("the board size is {0}*{0}", numToCheck);
             Console.WriteLine(message);
             
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
-            
-            Ex02.ConsoleUtils.Screen.Clear();
-            
-            isInputVaild = true;
-            m_SquareBoradSize = numToCheck;
 
+            isInputVaild = true;
+            m_BoradSize = numToCheck;
         }
     }
 
-    public bool getIsTwoPlayets()
+    public GameMode GetIsTwoPlayersOrAgainstComputer()
     {
-        return m_isTwoPlayets;
+        return m_gameMode.Value;
     }
 
     public void setIsTwoPlayets()
@@ -80,7 +81,9 @@ internal class GameConfiguration
         int numToCheck = 0;
         bool isInputVaild = false;
         string inputFromUser;
-        
+
+        Ex02.ConsoleUtils.Screen.Clear();
+
         Console.WriteLine("==============================================");
         Console.WriteLine("               tic-tac-toe                   ");
         Console.WriteLine("new game - set who would you like to play with");
@@ -92,7 +95,8 @@ internal class GameConfiguration
         {
             Console.WriteLine("");
             Console.WriteLine("Please choose whether to play against the computer or against another player");
-            Console.WriteLine("select: 0 - computer , 1 - another player");
+            Console.WriteLine("1.computer");
+            Console.WriteLine("2.another player");
 
             inputFromUser = Console.ReadLine();
 
@@ -109,20 +113,39 @@ internal class GameConfiguration
                 continue;
             }
 
-            if (numToCheck == 0)
+            if (numToCheck == 1)
             {
-                m_isTwoPlayets = false;
+                m_gameMode = GameMode.AgainstComputer;
                 isInputVaild = true;
+                //setPlayerName(ref m_player1Name,1);
+                
+                Ex02.ConsoleUtils.Screen.Clear();
+                Console.WriteLine("You chose a game against the computer");
+                //Console.WriteLine("your name is: " + m_player1Name);
+                
                 continue;
             }
 
-            if (numToCheck == 1)
+            if (numToCheck == 2)
             {
-                m_isTwoPlayets = true;
+                m_gameMode = GameMode.TwoPlayers;
+                //setPlayerName(ref m_player1Name, 1);
+                //setPlayerName(ref m_player2Name, 2);
                 isInputVaild = true;
+
+                Ex02.ConsoleUtils.Screen.Clear();
+                Console.WriteLine("You chose a game against the another player");
+                //Console.WriteLine("player 1 name is: " + m_player1Name);
+                //Console.WriteLine("player 2 name is: " + m_player2Name);
+                
                 continue;
             }
+
+            Console.WriteLine("invalid input - please choose 1 or 2");
         }
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
 
     }
 
@@ -150,7 +173,7 @@ internal class GameConfiguration
         {
             inputFromUserAsInt = int.Parse(userInput);
         }
-        catch (Exception ex)
+        catch
         {
             Console.WriteLine("Invalid input - not a natural number");
             inputFromUserAsInt = -1;
@@ -159,6 +182,11 @@ internal class GameConfiguration
         return inputFromUserAsInt;
     }
 
-
+    private void setPlayerName(ref string palyer,int playerNumber)
+    {
+        Console.WriteLine("");
+        Console.WriteLine("Please enter the name of palyer " + playerNumber + ": ");
+        palyer = Console.ReadLine();
+    }
 }
 
