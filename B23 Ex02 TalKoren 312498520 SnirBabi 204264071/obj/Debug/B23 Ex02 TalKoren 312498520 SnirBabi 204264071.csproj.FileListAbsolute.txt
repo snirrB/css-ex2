@@ -1,0 +1,3 @@
+C:\Users\snir1\source\repos\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\obj\Debug\B23 Ex02 TalKoren 312498520 SnirBabi 204264071.csproj.AssemblyReference.cache
+C:\Users\snir1\source\repos\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\obj\Debug\B23 Ex02 TalKoren 312498520 SnirBabi 204264071.csproj.SuggestedBindingRedirects.cache
+C:\Users\snir1\source\repos\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\B23 Ex02 TalKoren 312498520 SnirBabi 204264071\obj\Debug\B23 Ex02 TalKoren 312498520 SnirBabi 204264071.csproj.CoreCompileInputs.cache
